@@ -22,6 +22,8 @@ function App() {
     document.addEventListener('keydown', handlePlayerJump);
 
     const isGameOver = () => {
+      if (gameOver || !gameStarted) return;
+
       const domRect1 = document
         .querySelector('.player')
         .getBoundingClientRect();
@@ -38,7 +40,7 @@ function App() {
     };
 
     const intervalId = setInterval(() => {
-      if (gameStarted && !gameOver && isGameOver()) {
+      if (isGameOver()) {
         setGameOver(true);
       }
     }, 100);
@@ -50,7 +52,7 @@ function App() {
   });
 
   const renderObstacles = () => {
-    return <div className="obstacle obstacle-easy"></div>;
+    return <div className="obstacle obstacle-medium"></div>;
   };
 
   if (!gameStarted) {
