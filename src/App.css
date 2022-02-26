@@ -1,3 +1,38 @@
+body {
+  background-color: #eee5e5;
+}
+
+.startMenuWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.startMenuContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  background-color: aliceblue;
+  padding: 2rem 5rem;
+  box-shadow: 0px 0px 2px black;
+}
+
+.startMenuTitle {
+  font-size: 4rem;
+  text-shadow: 5px 4px #a4f3d1;
+}
+
+.startBtn {
+  border: 1px solid #a4f3d1;
+  padding: 0.2rem 2rem;
+  font-size: 2rem;
+  background-color: white;
+  box-shadow: 0px 0px 2px gray;
+  cursor: pointer;
+}
+
 .gameWrapper {
   padding-top: 2rem;
   display: flex;
@@ -67,6 +102,18 @@
   font-size: 1rem;
   color: white;
   text-shadow: 1px 1px gray;
+}
+
+.menuBtn {
+  position: absolute;
+  top: 80%;
+  left: 40%;
+  border: 1px solid white;
+  padding: 0.2rem 2rem;
+  font-size: 1.5rem;
+  background-color: white;
+  box-shadow: 0px 0px 2px black;
+  cursor: pointer;
 }
 
 @keyframes player-jump {

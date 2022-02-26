@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
+import './App.css';
 
 function App() {
   const [isJumping, setIsJumping] = useState(false);
   const [gameOver, setGameOver] = useState(false);
-
-  useEffect(() => {}, []);
+  const [gameStarted, setGameStarted] = useState(false);
 
   useEffect(() => {
     const handlePlayerJump = () => {
@@ -38,7 +38,7 @@ function App() {
     };
 
     const intervalId = setInterval(() => {
-      if (isGameOver()) {
+      if (gameStarted && !gameOver && isGameOver()) {
         setGameOver(true);
       }
     }, 100);
@@ -52,6 +52,25 @@ function App() {
   const renderObstacles = () => {
     return <div className="obstacle obstacle-easy"></div>;
   };
+
+  if (!gameStarted) {
+    return (
+      <div className="startMenuWrapper">
+        <div className="startMenuContainer">
+          <div className="startMenuTitle">Block Jump</div>
+          <button
+            onClick={() => {
+              setGameOver(false);
+              setGameStarted(true);
+            }}
+            className="startBtn"
+          >
+            Start
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="gameWrapper">
@@ -68,6 +87,9 @@ function App() {
           <>
             <div className="gameOverText">Game Over!</div>
             <div className="smallText">Press any key to restart...</div>
+            <button onClick={() => setGameStarted(false)} className="menuBtn">
+              Main Menu
+            </button>
           </>
         )}
       </div>
